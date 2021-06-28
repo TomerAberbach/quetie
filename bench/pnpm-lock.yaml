@@ -1,0 +1,74 @@
+lockfileVersion: 5.3
+
+specifiers:
+  benchmark: 2.1.4
+  denque: 1.5.0
+  double-ended-queue: 2.1.0-0
+  fast-check: 2.17.0
+  yocto-queue: 0.1.0
+
+devDependencies:
+  benchmark: 2.1.4
+  denque: 1.5.0
+  double-ended-queue: 2.1.0-0
+  fast-check: 2.17.0
+  yocto-queue: 0.1.0
+
+packages:
+  /benchmark/2.1.4:
+    resolution: { integrity: sha1-CfPeMckWQl1JjMLuVloOvzwqVik= }
+    dependencies:
+      lodash: 4.17.21
+      platform: 1.3.6
+    dev: true
+
+  /denque/1.5.0:
+    resolution:
+      {
+        integrity: sha512-CYiCSgIF1p6EUByQPlGkKnP1M9g0ZV3qMIrqMqZqdwazygIA/YP2vrbcyl1h/WppKJTdl1F85cXIle+394iDAQ==
+      }
+    engines: { node: '>=0.10' }
+    dev: true
+
+  /double-ended-queue/2.1.0-0:
+    resolution: { integrity: sha1-ED01J/0xUo9AGIEwyEHv3XgmTlw= }
+    dev: true
+
+  /fast-check/2.17.0:
+    resolution:
+      {
+        integrity: sha512-fNNKkxNEJP+27QMcEzF6nbpOYoSZIS0p+TyB+xh/jXqRBxRhLkiZSREly4ruyV8uJi7nwH1YWAhi7OOK5TubRw==
+      }
+    engines: { node: '>=8.0.0' }
+    dependencies:
+      pure-rand: 5.0.0
+    dev: true
+
+  /lodash/4.17.21:
+    resolution:
+      {
+        integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+      }
+    dev: true
+
+  /platform/1.3.6:
+    resolution:
+      {
+        integrity: sha512-fnWVljUchTro6RiCFvCXBbNhJc2NijN7oIQxbwsyL0buWJPG85v81ehlHI9fXrJsMNgTofEoWIQeClKpgxFLrg==
+      }
+    dev: true
+
+  /pure-rand/5.0.0:
+    resolution:
+      {
+        integrity: sha512-lD2/y78q+7HqBx2SaT6OT4UcwtvXNRfEpzYEzl0EQ+9gZq2Qi3fa0HDnYPeqQwhlHJFBUhT7AO3mLU3+8bynHA==
+      }
+    dev: true
+
+  /yocto-queue/0.1.0:
+    resolution:
+      {
+        integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+      }
+    engines: { node: '>=10' }
+    dev: true

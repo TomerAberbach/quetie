@@ -1,0 +1,123 @@
+{
+  "name": "quetie",
+  "version": "0.0.0",
+  "author": {
+    "name": "Tomer Aberbach",
+    "email": "tomeraberbach@gmail.com",
+    "url": "https://tomeraberba.ch"
+  },
+  "description": "Just the cutest and tiniest queue/deque implementation!",
+  "keywords": [
+    "queue",
+    "deque",
+    "double-ended",
+    "data",
+    "structure",
+    "algorithm",
+    "queues",
+    "queuing",
+    "list",
+    "array",
+    "stack",
+    "fifo",
+    "lifo",
+    "enqueue",
+    "dequeue",
+    "push",
+    "pop",
+    "unshift",
+    "shift"
+  ],
+  "homepage": "https://github.com/TomerAberbach/quetie",
+  "repository": "TomerAberbach/quetie",
+  "bugs": {
+    "url": "https://github.com/TomerAberbach/quetie/issues"
+  },
+  "license": "Apache-2.0",
+  "files": [
+    "src"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">= 12.17"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "not op_mini all"
+  ],
+  "exports": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./src/index.d.ts",
+  "scripts": {
+    "prepare": "pnpx --no-install simple-git-hooks",
+    "lint:prettier:base": "prettier --loglevel silent --ignore-path .gitignore",
+    "lint:prettier": "run-s \"lint:prettier:base -- --write .\"",
+    "lint:eslint:base": "eslint --cache --ext js --ignore-path .gitignore",
+    "lint:eslint": "run-s \"lint:eslint:base -- --fix .\"",
+    "lint": "run-s lint:*",
+    "test:js": "ava",
+    "test:ts": "tsd",
+    "test": "run-s test:*",
+    "coverage": "c8 run-s test:js",
+    "build": "bundt --module --minify",
+    "clean": "rimraf dist",
+    "prepublishOnly": "run-s build"
+  },
+  "prettier": "@tomer/prettier-config",
+  "eslintConfig": {
+    "extends": "@tomer",
+    "rules": {
+      "no-underscore-dangle": "off",
+      "node/no-unpublished-import": "off"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "run-s \"lint:prettier:base -- --write {@}\" --",
+      "run-s \"lint:eslint:base -- --fix {@}\" --"
+    ],
+    "*.ts": "run-s \"lint:prettier:base -- --write {@}\" --",
+    "*.{json,yml,md}": "run-s \"lint:prettier:base -- --write {@}\" --"
+  },
+  "tsd": {
+    "directory": "./test"
+  },
+  "terser": {
+    "mangle": {
+      "properties": {
+        "regex": "_.+"
+      }
+    },
+    "compress": {
+      "keep_classnames": true,
+      "module": true
+    }
+  },
+  "commitlint": {
+    "extends": "@commitlint/config-conventional"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpx --no-install lint-staged",
+    "commit-msg": "pnpx --no-install commitlint -e"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "12.1.4",
+    "@commitlint/config-conventional": "12.1.4",
+    "@tomer/eslint-config": "0.1.1",
+    "@tomer/prettier-config": "0.1.0",
+    "ava": "3.15.0",
+    "ava-fast-check": "4.0.2",
+    "bundt": "1.1.5",
+    "c8": "7.7.3",
+    "eslint": "7.29.0",
+    "fast-check": "2.17.0",
+    "lint-staged": "11.0.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.3.2",
+    "rimraf": "3.0.2",
+    "simple-git-hooks": "2.5.1",
+    "tsd": "0.17.0",
+    "typescript": "4.3.4"
+  }
+}
