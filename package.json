@@ -50,6 +50,7 @@
   "module": "./dist/index.js",
   "types": "./src/index.d.ts",
   "scripts": {
+    "license": "addlicense $(git diff --name-only HEAD)",
     "prepare": "pnpx --no-install simple-git-hooks",
     "lint:prettier:base": "prettier --loglevel silent --ignore-path .gitignore",
     "lint:prettier": "run-s \"lint:prettier:base -- --write .\"",
@@ -74,10 +75,14 @@
   },
   "lint-staged": {
     "*.js": [
+      "addlicense",
       "run-s \"lint:prettier:base -- --write {@}\" --",
       "run-s \"lint:eslint:base -- --fix {@}\" --"
     ],
-    "*.ts": "run-s \"lint:prettier:base -- --write {@}\" --",
+    "*.ts": [
+      "addlicense",
+      "run-s \"lint:prettier:base -- --write {@}\" --"
+    ],
     "*.{json,yml,md}": "run-s \"lint:prettier:base -- --write {@}\" --"
   },
   "tsd": {
