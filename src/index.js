@@ -50,7 +50,7 @@ export class Queue {
   }
 
   shift() {
-    if (this._size === 0) {
+    if (!this._size) {
       return undefined
     }
 
@@ -66,7 +66,7 @@ export class Queue {
   }
 
   clear() {
-    this._data = Array.from({ length: 16 })
+    this._data = Array(16)
     this._startIndex = 0
     this._size = 0
   }
@@ -82,8 +82,10 @@ export class Deque extends Queue {
   }
 
   pop() {
-    return this._size === 0
-      ? undefined
-      : this._remove(this._mask(this._startIndex + this._size - 1))
+    if (this._size) {
+      return this._remove(this._mask(this._startIndex + this._size - 1))
+    }
+
+    return undefined
   }
 }
