@@ -20,7 +20,7 @@
 
 ## Features
 
-- **Tiny:** ~357 bytes minzipped!
+- **Tiny:** ~367 bytes minzipped!
 - **Fast:**
   [amortized O(1) time complexity](https://en.wikipedia.org/wiki/Amortized_analysis)
   for all operations

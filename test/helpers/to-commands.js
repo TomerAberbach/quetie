@@ -23,9 +23,9 @@ const toCommands = description =>
       (...args) => ({
         check: () => true,
         run: ({ t, model }, real) => check(t, model, real, ...args),
-        toString: () => `${name}(${args.map(fc.stringify).join(`, `)})`
-      })
-    ])
+        toString: () => `${name}(${args.map(fc.stringify).join(`, `)})`,
+      }),
+    ]),
   )
 
 export default toCommands

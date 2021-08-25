@@ -20,7 +20,7 @@ import toCommands from './helpers/to-commands.js'
 
 const assertUndefinedInUnusedRanges = (
   t,
-  { _data: data, _startIndex: startIndex, _size: size }
+  { _data: data, _startIndex: startIndex, _size: size },
 ) => {
   let endIndex = startIndex + size
   if (endIndex > data.length) {
@@ -49,12 +49,12 @@ const {
   unshiftCommand,
   shiftCommand,
   sizeCommand,
-  spreadCommand
+  spreadCommand,
 } = toCommands({
   get(t, model, real, index) {
     t.is(
       real.get(index),
-      model[((index % model.length) + model.length) % model.length]
+      model[((index % model.length) + model.length) % model.length],
     )
   },
   push(t, model, real, value) {
@@ -84,7 +84,7 @@ const {
   },
   spread(t, model, real) {
     t.deepEqual([...real], model)
-  }
+  },
 })
 
 testProp(
@@ -98,10 +98,10 @@ testProp(
         fc.anything().map(unshiftCommand),
         fc.constant(shiftCommand()),
         fc.constant(sizeCommand()),
-        fc.constant(spreadCommand())
+        fc.constant(spreadCommand()),
       ],
-      { maxCommands: 10000 }
-    )
+      { maxCommands: 10000 },
+    ),
   ],
   (t, commands) => {
     let real
@@ -109,12 +109,12 @@ testProp(
     fc.modelRun(
       () => ({
         model: { t, model: [] },
-        real: (real = new Deque())
+        real: (real = new Deque()),
       }),
-      commands
+      commands,
     )
 
     real.clear()
     t.deepEqual([...real], [])
-  }
+  },
 )

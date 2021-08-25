@@ -25,7 +25,7 @@ const bench = commands => {
     'native-array': () => [],
     quetie: () => new Deque(),
     denque: () => new Denque(),
-    'double-ended-queue': () => new DoubleEndedQueue()
+    'double-ended-queue': () => new DoubleEndedQueue(),
   }
 
   const suite = new benchmark.Suite()
@@ -49,8 +49,8 @@ bench(
       fc.anything().map(value => deque => deque.push(value)),
       fc.constant(deque => deque.pop()),
       fc.anything().map(value => deque => deque.unshift(value)),
-      fc.constant(deque => deque.shift())
+      fc.constant(deque => deque.shift()),
     ),
-    1000000
-  )
+    1000000,
+  ),
 )
