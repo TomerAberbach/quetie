@@ -20,7 +20,7 @@
 
 ## Features
 
-- **Tiny:** ~345 bytes minzipped!
+- **Tiny:** ~357 bytes minzipped!
 - **Fast:**
   [amortized O(1) time complexity](https://en.wikipedia.org/wiki/Amortized_analysis)
   for all operations
@@ -46,6 +46,17 @@ queue.push(3)
 console.log(queue.size)
 //=> 3
 
+console.log(queue.get(0))
+console.log(queue.get(1))
+console.log(queue.get(2))
+console.log(queue.get(3))
+console.log(queue.get(-1))
+//=> 1
+//=> 2
+//=> 3
+//=> 1
+//=> 3
+
 console.log([...queue])
 //=> [ 1, 2, 3 ]
 
@@ -67,6 +78,17 @@ deque.unshift(0)
 
 console.log(deque.size)
 //=> 4
+
+console.log(deque.get(0))
+console.log(deque.get(1))
+console.log(deque.get(2))
+console.log(deque.get(3))
+console.log(deque.get(-1))
+//=> 0
+//=> 1
+//=> 2
+//=> 3
+//=> 3
 
 console.log([...deque])
 //=> [ 0, 1, 2, 3 ]

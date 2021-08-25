@@ -19,6 +19,7 @@ import { Deque, Queue } from '../src'
 
 const queue = new Queue<number>()
 
+expectType<number | undefined>(queue.get(0))
 expectType<void>(queue.push(1))
 expectType<number | undefined>(queue.shift())
 expectType<number[]>([...queue])
@@ -27,6 +28,7 @@ expectType<number>(queue.size)
 
 const deque = new Deque<string>()
 
+expectType<string | undefined>(deque.get(0))
 expectType<void>(deque.push(`wow`))
 expectType<string | undefined>(deque.pop())
 expectType<void>(deque.unshift(`wow`))

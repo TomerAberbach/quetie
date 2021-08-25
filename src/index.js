@@ -20,7 +20,13 @@ export class Queue {
   }
 
   _mask(index) {
-    return index & (this._data.length - 1)
+    return (this._startIndex + index) & (this._data.length - 1)
+  }
+
+  get(index) {
+    return this._data[
+      this._mask(((index % this._size) + this._size) % this._size)
+    ]
   }
 
   _add(index, value) {
@@ -39,7 +45,7 @@ export class Queue {
   }
 
   push(value) {
-    this._add(this._mask(this._startIndex + this._size), value)
+    this._add(this._mask(this._size), value)
   }
 
   _remove(index) {
@@ -55,13 +61,13 @@ export class Queue {
     }
 
     const value = this._remove(this._startIndex)
-    this._startIndex = this._mask(this._startIndex + 1)
+    this._startIndex = this._mask(1)
     return value
   }
 
   *[Symbol.iterator]() {
     for (let i = 0; i < this._size; i++) {
-      yield this._data[this._mask(this._startIndex + i)]
+      yield this.get(i)
     }
   }
 
@@ -78,12 +84,12 @@ export class Queue {
 
 export class Deque extends Queue {
   unshift(value) {
-    this._add((this._startIndex = this._mask(this._startIndex - 1)), value)
+    this._add((this._startIndex = this._mask(-1)), value)
   }
 
   pop() {
     if (this._size) {
-      return this._remove(this._mask(this._startIndex + this._size - 1))
+      return this._remove(this._mask(this._size - 1))
     }
 
     return undefined

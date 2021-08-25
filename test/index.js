@@ -43,6 +43,7 @@ const assertUndefinedInUnusedRanges = (
 }
 
 const {
+  getCommand,
   pushCommand,
   popCommand,
   unshiftCommand,
@@ -50,6 +51,12 @@ const {
   sizeCommand,
   spreadCommand
 } = toCommands({
+  get(t, model, real, index) {
+    t.is(
+      real.get(index),
+      model[((index % model.length) + model.length) % model.length]
+    )
+  },
   push(t, model, real, value) {
     t.is(real.push(value), undefined)
     model.push(value)
@@ -85,6 +92,7 @@ testProp(
   [
     fc.commands(
       [
+        fc.integer().map(getCommand),
         fc.anything().map(pushCommand),
         fc.constant(popCommand()),
         fc.anything().map(unshiftCommand),

@@ -27,6 +27,12 @@ export class Queue<Value> {
   /** Returns an iterator over the values in the queue from start to end. */
   [Symbol.iterator](): Iterator<Value>
 
+  /**
+   * Returns the value at the given `index` with wrap around, or `undefined` if
+   * the queue is empty.
+   */
+  get(index: number): Value | undefined
+
   /** Adds `value` to the end of the queue. */
   push(value: Value): void
 
@@ -52,6 +58,12 @@ export class Queue<Value> {
 export class Deque<Value> {
   /** Creates and empty deque. */
   constructor()
+
+  /**
+   * Returns the value at the given `index` with wrap around, or `undefined` if
+   * the deque is empty.
+   */
+  get(index: number): Value | undefined
 
   /** Adds `value` to the end of the deque. */
   push(value: Value): void
