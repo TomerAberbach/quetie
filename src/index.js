@@ -23,7 +23,7 @@ export class Queue {
     return (this._startIndex + index) & (this._data.length - 1)
   }
 
-  get(index) {
+  at(index) {
     return this._data[
       this._mask(((index % this._size) + this._size) % this._size)
     ]
@@ -65,7 +65,7 @@ export class Queue {
 
   *[Symbol.iterator]() {
     for (let i = 0; i < this._size; i++) {
-      yield this.get(i)
+      yield this.at(i)
     }
   }
 

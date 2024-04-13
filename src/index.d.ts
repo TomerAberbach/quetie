@@ -31,7 +31,7 @@ declare class Queue<Value> {
    * Returns the value at the given `index` with wrap around, or `undefined` if
    * the queue is empty.
    */
-  public get(index: number): Value | undefined
+  public at(index: number): Value | undefined
 
   /** Adds `value` to the end of the queue. */
   public push(value: Value): void
@@ -63,7 +63,7 @@ declare class Deque<Value> {
    * Returns the value at the given `index` with wrap around, or `undefined` if
    * the deque is empty.
    */
-  public get(index: number): Value | undefined
+  public at(index: number): Value | undefined
 
   /** Adds `value` to the end of the deque. */
   public push(value: Value): void

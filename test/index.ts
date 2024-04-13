@@ -61,7 +61,7 @@ const {
   spreadCommand,
 } = toCommands<unknown[], Deque<unknown>>({
   get: (model, real, index: number) => {
-    expect(real.get(index)).toBe(
+    expect(real.at(index)).toBe(
       model[((index % model.length) + model.length) % model.length],
     )
   },
@@ -123,7 +123,7 @@ test.prop(
 test.skip(`types`, () => {
   const queue = new Queue<number>()
 
-  expectTypeOf<number | undefined>(queue.get(0))
+  expectTypeOf<number | undefined>(queue.at(0))
   expectTypeOf<void>(queue.push(1))
   expectTypeOf<number | undefined>(queue.shift())
   expectTypeOf<number[]>([...queue])
@@ -132,7 +132,7 @@ test.skip(`types`, () => {
 
   const deque = new Deque<string>()
 
-  expectTypeOf<string | undefined>(deque.get(0))
+  expectTypeOf<string | undefined>(deque.at(0))
   expectTypeOf<void>(deque.push(`wow`))
   expectTypeOf<string | undefined>(deque.pop())
   expectTypeOf<void>(deque.unshift(`wow`))
