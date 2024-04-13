@@ -38,11 +38,8 @@ export class Queue {
 
     const previousCapacity = this._data.length
     this._data.length <<= 1
-
-    if (this._startIndex > 0) {
-      this._data.copyWithin(previousCapacity, 0, this._startIndex)
-      this._data.fill(undefined, 0, this._startIndex)
-    }
+    this._data.copyWithin(previousCapacity, 0, this._startIndex)
+    this._data.fill(undefined, 0, this._startIndex)
   }
 
   push(value) {
