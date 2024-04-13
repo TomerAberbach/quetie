@@ -66,14 +66,16 @@ bench(
       fc.anything().map(value => queue => queue.enqueue(value)),
       fc.constant(queue => queue.dequeue()),
     ),
-    1000000,
+    1_000_000,
   ),
 )
 console.log()
 
 console.log(`100,000 push calls followed by 100,000 shift calls:`)
+const enqueue = queue => queue.enqueue({})
+const dequeue = queue => queue.dequeue()
 bench(
-  Array.from({ length: 100000 }, () => queue => queue.enqueue({})).concat(
-    Array.from({ length: 100000 }, () => queue => queue.dequeue()),
+  Array.from({ length: 100_000 }, () => enqueue).concat(
+    Array.from({ length: 100_000 }, () => dequeue),
   ),
 )

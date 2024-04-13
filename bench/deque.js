@@ -51,6 +51,6 @@ bench(
       fc.anything().map(value => deque => deque.unshift(value)),
       fc.constant(deque => deque.shift()),
     ),
-    1000000,
+    1_000_000,
   ),
 )

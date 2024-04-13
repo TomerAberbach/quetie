@@ -1,74 +1,101 @@
-lockfileVersion: 5.3
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-specifiers:
-  benchmark: 2.1.4
-  denque: 1.5.0
-  double-ended-queue: 2.1.0-0
-  fast-check: 2.17.0
-  yocto-queue: 0.1.0
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 devDependencies:
-  benchmark: 2.1.4
-  denque: 1.5.0
-  double-ended-queue: 2.1.0-0
-  fast-check: 2.17.0
-  yocto-queue: 0.1.0
+  benchmark:
+    specifier: ^2.1.4
+    version: 2.1.4
+  denque:
+    specifier: ^2.1.0
+    version: 2.1.0
+  double-ended-queue:
+    specifier: 2.1.0-0
+    version: 2.1.0-0
+  fast-check:
+    specifier: ^3.17.1
+    version: 3.17.1
+  yocto-queue:
+    specifier: ^1.0.0
+    version: 1.0.0
 
 packages:
-  /benchmark/2.1.4:
-    resolution: { integrity: sha1-CfPeMckWQl1JjMLuVloOvzwqVik= }
+  /benchmark@2.1.4:
+    resolution:
+      {
+        integrity: sha512-l9MlfN4M1K/H2fbhfMy3B7vJd6AGKJVQn2h6Sg/Yx+KckoUA7ewS5Vv6TjSq18ooE1kS9hhAlQRH3AkXIh/aOQ==,
+      }
     dependencies:
       lodash: 4.17.21
       platform: 1.3.6
     dev: true
 
-  /denque/1.5.0:
+  /denque@2.1.0:
     resolution:
       {
-        integrity: sha512-CYiCSgIF1p6EUByQPlGkKnP1M9g0ZV3qMIrqMqZqdwazygIA/YP2vrbcyl1h/WppKJTdl1F85cXIle+394iDAQ==
+        integrity: sha512-HVQE3AAb/pxF8fQAoiqpvg9i3evqug3hoiwakOyZAwJm+6vZehbkYXZ0l4JxS+I3QxM97v5aaRNhj8v5oBhekw==,
       }
     engines: { node: '>=0.10' }
     dev: true
 
-  /double-ended-queue/2.1.0-0:
-    resolution: { integrity: sha1-ED01J/0xUo9AGIEwyEHv3XgmTlw= }
-    dev: true
-
-  /fast-check/2.17.0:
+  /double-ended-queue@2.1.0-0:
     resolution:
       {
-        integrity: sha512-fNNKkxNEJP+27QMcEzF6nbpOYoSZIS0p+TyB+xh/jXqRBxRhLkiZSREly4ruyV8uJi7nwH1YWAhi7OOK5TubRw==
+        integrity: sha512-+BNfZ+deCo8hMNpDqDnvT+c0XpJ5cUa6mqYq89bho2Ifze4URTqRkcwR399hWoTrTkbZ/XJYDgP6rc7pRgffEQ==,
+      }
+    dev: true
+
+  /fast-check@3.17.1:
+    resolution:
+      {
+        integrity: sha512-jIKXJVe6ZO0SpwEgVtEVujTf8TwjI9wMXFJCjsDHUB3RroUbXBgF4kOSz3A7MW0UR26aqsoB8i9O2mjtjERAiA==,
       }
     engines: { node: '>=8.0.0' }
     dependencies:
-      pure-rand: 5.0.0
+      pure-rand: 6.1.0
     dev: true
 
-  /lodash/4.17.21:
+  /lodash@4.17.21:
     resolution:
       {
-        integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+        integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==,
       }
     dev: true
 
-  /platform/1.3.6:
+  /platform@1.3.6:
     resolution:
       {
-        integrity: sha512-fnWVljUchTro6RiCFvCXBbNhJc2NijN7oIQxbwsyL0buWJPG85v81ehlHI9fXrJsMNgTofEoWIQeClKpgxFLrg==
+        integrity: sha512-fnWVljUchTro6RiCFvCXBbNhJc2NijN7oIQxbwsyL0buWJPG85v81ehlHI9fXrJsMNgTofEoWIQeClKpgxFLrg==,
       }
     dev: true
 
-  /pure-rand/5.0.0:
+  /pure-rand@6.1.0:
     resolution:
       {
-        integrity: sha512-lD2/y78q+7HqBx2SaT6OT4UcwtvXNRfEpzYEzl0EQ+9gZq2Qi3fa0HDnYPeqQwhlHJFBUhT7AO3mLU3+8bynHA==
+        integrity: sha512-bVWawvoZoBYpp6yIoQtQXHZjmz35RSVHnUOTefl8Vcjr8snTPY1wnpSPMWekcFwbxI6gtmT7rSYPFvz71ldiOA==,
       }
     dev: true
 
-  /yocto-queue/0.1.0:
+  /yocto-queue@1.0.0:
     resolution:
       {
-        integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+        integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==,
       }
-    engines: { node: '>=10' }
+    engines: { node: '>=12.20' }
     dev: true

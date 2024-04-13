@@ -9,8 +9,11 @@
   <a href="https://github.com/TomerAberbach/quetie/actions">
     <img src="https://github.com/TomerAberbach/quetie/workflows/CI/badge.svg" alt="CI" />
   </a>
-  <a href="https://bundlephobia.com/result?p=quetie">
-    <img src="https://badgen.net/bundlephobia/minzip/quetie" alt="minzip size" />
+  <a href="https://unpkg.com/quetie/dist/index.min.js">
+    <img src="https://deno.bundlejs.com/?q=quetie&badge" alt="gzip size" />
+  </a>
+  <a href="https://unpkg.com/quetie/dist/index.min.js">
+    <img src="https://deno.bundlejs.com/?q=quetie&config={%22compression%22:{%22type%22:%22brotli%22}}&badge" alt="brotli size" />
   </a>
 </div>
 
@@ -20,7 +23,7 @@
 
 ## Features
 
-- **Tiny:** ~367 bytes minzipped!
+- **Tiny:** ~370 bytes minzipped!
 - **Fast:**
   [amortized O(1) time complexity](https://en.wikipedia.org/wiki/Amortized_analysis)
   for all operations
@@ -35,7 +38,7 @@ $ npm i quetie
 ## Usage
 
 ```js
-import { Queue, Deque } from 'quetie'
+import { Deque, Queue } from 'quetie'
 
 const queue = new Queue()
 
@@ -108,43 +111,6 @@ console.log(deque.pop())
 See the
 [type definitions](https://github.com/TomerAberbach/quetie/blob/main/src/index.d.ts)
 for more documentation.
-
-## Benchmarks
-
-Higher is better!
-
-### `Queue`
-
-Random sequence of 1,000,000 `push` and `shift` calls:
-
-```
-native array x 24.16 ops/sec ±1.50% (44 runs sampled)
-quetie x 69.70 ops/sec ±0.31% (72 runs sampled)
-yocto-queue x 65.58 ops/sec ±0.19% (68 runs sampled)
-denque x 63.27 ops/sec ±0.30% (66 runs sampled)
-double-ended-queue x 30.84 ops/sec ±0.42% (55 runs sampled)
-```
-
-100,000 `push` calls followed by 100,000 `shift` calls:
-
-```
-native array x 1.21 ops/sec ±0.52% (8 runs sampled)
-quetie x 196 ops/sec ±3.23% (83 runs sampled)
-yocto-queue x 154 ops/sec ±1.11% (87 runs sampled)
-denque x 177 ops/sec ±1.72% (82 runs sampled)
-double-ended-queue x 132 ops/sec ±2.99% (63 runs sampled)
-```
-
-### `Deque`
-
-Random sequence of 1,000,000 `push`, `pop`, `shift`, and `unshift` calls:
-
-```
-native array x 23.83 ops/sec ±1.60% (44 runs sampled)
-quetie x 65.25 ops/sec ±0.40% (68 runs sampled)
-denque x 62.34 ops/sec ±0.30% (65 runs sampled)
-double-ended-queue x 40.98 ops/sec ±0.36% (55 runs sampled)
-```
 
 ## Contributing
 

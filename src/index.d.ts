@@ -20,33 +20,33 @@
  *
  * Each operation has amortized O(1) time complexity.
  */
-export class Queue<Value> {
+declare class Queue<Value> {
   /** Creates an empty queue. */
-  constructor()
+  public constructor()
 
   /** Returns an iterator over the values in the queue from start to end. */
-  [Symbol.iterator](): Iterator<Value>
+  public [Symbol.iterator](): Iterator<Value>
 
   /**
    * Returns the value at the given `index` with wrap around, or `undefined` if
    * the queue is empty.
    */
-  get(index: number): Value | undefined
+  public get(index: number): Value | undefined
 
   /** Adds `value` to the end of the queue. */
-  push(value: Value): void
+  public push(value: Value): void
 
   /**
    * Removes and returns the value at the start of the queue, or `undefined` if
    * the queue is empty.
    */
-  shift(): Value | undefined
+  public shift(): Value | undefined
 
   /** Empties the queue. */
-  clear(): void
+  public clear(): void
 
   /** Returns the number of elements in the queue. */
-  get size(): number
+  public get size(): number
 }
 
 /**
@@ -55,40 +55,42 @@ export class Queue<Value> {
  *
  * Each operation has amortized O(1) time complexity.
  */
-export class Deque<Value> {
+declare class Deque<Value> {
   /** Creates and empty deque. */
-  constructor()
+  public constructor()
 
   /**
    * Returns the value at the given `index` with wrap around, or `undefined` if
    * the deque is empty.
    */
-  get(index: number): Value | undefined
+  public get(index: number): Value | undefined
 
   /** Adds `value` to the end of the deque. */
-  push(value: Value): void
+  public push(value: Value): void
 
   /**
    * Removes and returns the value at the end of the deque, or `undefined` if
    * the deque is empty.
    */
-  pop(): Value | undefined
+  public pop(): Value | undefined
 
   /** Adds `value` to the start of the deque. */
-  unshift(value: Value): void
+  public unshift(value: Value): void
 
   /**
    * Removes and returns the value at the start of the deque, or `undefined` if
    * the deque is empty.
    */
-  shift(): Value | undefined
+  public shift(): Value | undefined
 
   /** Returns an iterator over the values in the deque from start to end. */
-  [Symbol.iterator](): Iterator<Value>
+  public [Symbol.iterator](): Iterator<Value>
 
   /** Empties the deque. */
-  clear(): void
+  public clear(): void
 
   /** Returns the number of elements in the deque. */
-  get size(): number
+  public get size(): number
 }
+
+export { Deque, Queue }

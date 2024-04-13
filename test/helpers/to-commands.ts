@@ -14,15 +14,19 @@
  * limitations under the License.
  */
 
-import { fc } from 'ava-fast-check'
+/* eslint-disable typescript/no-explicit-any */
 
-const toCommands = description =>
+import { fc } from 'tomer'
+
+const toCommands = <M extends object, R>(
+  description: Record<string, (model: M, real: R, ...args: any[]) => void>,
+): Record<string, (...args: unknown[]) => fc.Command<M, R>> =>
   Object.fromEntries(
     Object.entries(description).map(([name, check]) => [
       `${name}Command`,
-      (...args) => ({
+      (...args: unknown[]) => ({
         check: () => true,
-        run: ({ t, model }, real) => check(t, model, real, ...args),
+        run: (model: M, real: R) => check(model, real, ...args),
         toString: () => `${name}(${args.map(fc.stringify).join(`, `)})`,
       }),
     ]),
