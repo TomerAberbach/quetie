@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": {
     "name": "Tomer Aberbach",
-    "email": "tomeraberbach@gmail.com",
+    "email": "tomer@aberba.ch",
     "url": "https://tomeraberba.ch"
   },
   "description": "Just the cutest and tiniest queue/deque implementation!",
