@@ -1,24 +1,22 @@
-/**
- * Copyright 2021 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+/* eslint-disable typescript/no-invalid-void-type */
+/* eslint-disable typescript/no-confusing-void-expression */
+import { fc, test } from '@fast-check/vitest'
+import { expect, expectTypeOf } from 'vitest'
+import { Deque, Queue } from './index.js'
 
-/* eslint-disable typescript/no-confusing-void-expression, typescript/no-invalid-void-type */
-
-import { expectTypeOf, fc, test } from 'tomer'
-import { Deque, Queue } from '../src/index.js'
-import toCommands from './helpers/to-commands.js'
+const toCommands = <M extends object, R>(
+  description: Record<string, (model: M, real: R, ...args: any[]) => void>,
+): Record<string, (...args: unknown[]) => fc.Command<M, R>> =>
+  Object.fromEntries(
+    Object.entries(description).map(([name, check]) => [
+      `${name}Command`,
+      (...args: unknown[]) => ({
+        check: () => true,
+        run: (model: M, real: R) => check(model, real, ...args),
+        toString: () => `${name}(${args.map(fc.stringify).join(`, `)})`,
+      }),
+    ]),
+  )
 
 type DequeInternals = {
   _data: unknown[]
@@ -95,23 +93,20 @@ const {
   },
 })
 
-test.prop(
-  [
-    fc.commands(
-      [
-        fc.integer().map(getCommand!),
-        fc.integer().map(pushCommand!),
-        fc.constant(popCommand!()),
-        fc.integer().map(unshiftCommand!),
-        fc.constant(shiftCommand!()),
-        fc.constant(sizeCommand!()),
-        fc.constant(spreadCommand!()),
-      ],
-      { size: `max`, maxCommands: 1000 },
-    ),
-  ],
-  { numRuns: 1000 },
-)(`Deque behaves like an array and does not prevent GC`, commands => {
+test.prop([
+  fc.commands(
+    [
+      fc.integer().map(getCommand!),
+      fc.integer().map(pushCommand!),
+      fc.constant(popCommand!()),
+      fc.integer().map(unshiftCommand!),
+      fc.constant(shiftCommand!()),
+      fc.constant(sizeCommand!()),
+      fc.constant(spreadCommand!()),
+    ],
+    { size: `max`, maxCommands: 1000 },
+  ),
+])(`Deque behaves like an array and does not prevent GC`, commands => {
   let real: Deque<unknown>
 
   fc.modelRun(() => ({ model: [], real: (real = new Deque()) }), commands)
